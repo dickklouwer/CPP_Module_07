@@ -1,6 +1,6 @@
 #= Variables =#
 
-NAME := whatever
+NAME := Array
 
 SRCS := main.cpp
 SRCSDIR := srcs
@@ -9,7 +9,7 @@ OBJDIR := obj
 
 OBJ := $(addprefix $(OBJDIR)/,$(SRCS:.cpp=.o))
 
-CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
+CPP_FLAGS = -Wall -Werror -Wextra -std=c++11
 
 INC_DIR = includes
 INC_FLAGS := -I$(INC_DIR)
@@ -25,7 +25,7 @@ RESET = \033[0m
 all: $(NAME)
 
 $(NAME): $(OBJDIR) $(OBJ) $(INCLUDES)
-	@echo "$(GREEN)Building Whatever ...$(RESET)"
+	@echo "$(GREEN)Building Array ...$(RESET)"
 	@c++ $(OBJ) -o $(NAME)
 
 $(OBJDIR)/%.o: $(SRCSDIR)/%.cpp

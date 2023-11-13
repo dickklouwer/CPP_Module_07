@@ -5,33 +5,50 @@
 /*                                                     +:+                    */
 /*   By: dickklouwer <tklouwer@student.codam.nl>      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/10/19 08:18:55 by dickklouwer   #+#    #+#                 */
-/*   Updated: 2023/10/19 09:01:43 by dickklouwer   ########   odam.nl         */
+/*   Created: 2023/10/24 07:44:39 by dickklouwer   #+#    #+#                 */
+/*   Updated: 2023/10/24 08:32:16 by dickklouwer   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
-#include "whatever.hpp"
+#include "iter.hpp"
 
-int main(void)
+
+int	increment(int &x)
 {
-	int a = 2;
-	int b = 3;
+	return x += 1;
+}
 
-	::swap(a, b);
-	std::cout << "a = " << a << ", b = " << b << std::endl;
+int decrement(int &x)
+{
+	return x -= 1;
+}
 
-	std::cout << "min( a, b ) = " << ::min(a, b) << std::endl;
-	std::cout << "max( a, b ) = " << ::max(a, b) << std::endl;
-	
-	std::string c = "chaine1";
-	std::string d = "chaine2";
-	
-	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
+int main()
+{
+	int array[] = {1, 2, 3, 4, 5};
 
-	std::cout << "min( c, d ) = " << ::min(c, d) << std::endl;
-	std::cout << "max( c, d ) = " << ::max(c, d) << std::endl;
+	std::cout << "Original array: ";
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << array[i] << " ";
+	}
+	std::cout << std::endl;
+
+	std::cout << "Incremented array: ";
+	iter(array, 5, increment);
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << array[i] << " ";
+	}
+
+	std::cout << std::endl;
+	std::cout << "Back to Original array: ";
+	iter(array, 5, decrement);
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << array[i] << " ";
+	}
+
 	return 0;
 }
